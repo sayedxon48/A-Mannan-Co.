@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 md:py-28 lg:grid-cols-2 lg:px-8">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-1.5 text-xs font-semibold tracking-wide text-blue-900 uppercase">
-            Chartered Accountants &bull; Since 1994
+            Chartered Accountants &bull; Since 1996
           </span>
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
             Trusted Financial Guidance for{" "}

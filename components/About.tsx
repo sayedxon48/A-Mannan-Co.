@@ -20,7 +20,7 @@ export default function About() {
             Three decades of trusted financial expertise
           </h2>
           <p className="mt-6 text-base leading-relaxed text-slate-600">
-            Founded in 1994, A. Mannan &amp; Co. has grown into a firm trusted
+            Founded in 1996, A. Mannan &amp; Co. has grown into a firm trusted
             by individuals, startups, and established businesses for reliable
             audit, tax, and advisory work. We combine deep regulatory
             knowledge with a practical, client-first approach &mdash; helping

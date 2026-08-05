@@ -36,7 +36,7 @@ export default function Footer() {
                   A. Mannan &amp; Co.
                 </span>
                 <span className="block text-xs font-medium text-sky-300">
-                  Chartered Accountants &bull; Since 1994
+                  Chartered Accountants &bull; Since 1996
                 </span>
               </span>
             </div>
@@ -78,7 +78,7 @@ export default function Footer() {
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-slate-400 sm:flex-row">
           <p>&copy; 2026 A. Mannan &amp; Co. All rights reserved.</p>
           <p className="text-slate-500">
-            Chartered Accountants &bull; Since 1994
+            Chartered Accountants &bull; Since 1996
           </p>
         </div>
       </div>

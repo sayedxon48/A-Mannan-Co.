@@ -2,7 +2,7 @@ const REASONS = [
   {
     title: "30+ Years of Trust",
     description:
-      "Serving clients since 1994 with consistent, dependable financial guidance.",
+      "Serving clients since 1996 with consistent, dependable financial guidance.",
   },
   {
     title: "Qualified Experts",

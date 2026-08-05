@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "A. Mannan & Co. | Chartered Accountants",
   description:
-    "A. Mannan & Co. is an ICAB-registered Chartered Accountancy firm in Dhaka offering audit & assurance, taxation, accounting, and business advisory services since 1994.",
+    "A. Mannan & Co. is an ICAB-registered Chartered Accountancy firm in Dhaka offering audit & assurance, taxation, accounting, and business advisory services since 1996.",
 };
 
 export default function RootLayout({
