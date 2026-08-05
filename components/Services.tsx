@@ -60,9 +60,9 @@ const SERVICES = [
     ),
   },
   {
-    title: "Student Asset Valuation",
+    title: "Net Worth Certificate & Asset Valuation",
     description:
-      "Certified net worth and asset valuation reports that give your visa and foreign university applications the credibility they need — accurate, trusted, and ready on time.",
+      "CA reports, net worth certificates, and asset valuation reports that give your visa and foreign university applications the credibility they need — accurate, trusted, and ready on time.",
     icon: (
       <path
         strokeLinecap="round"

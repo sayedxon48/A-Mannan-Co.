@@ -13,7 +13,7 @@ const SERVICES = [
   "Accounting & Bookkeeping",
   "Company Formation & RJSC Compliance",
   "Financial & Business Advisory",
-  "Student Asset Valuation",
+  "Net Worth Certificate & Asset Valuation",
 ];
 
 export default function Footer() {

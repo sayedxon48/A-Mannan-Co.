@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import StructuredData from "@/components/StructuredData";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,10 +19,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://amannan.cc"),
   title: "A. Mannan & Co. | Chartered Accountants Dhaka | Since 1996",
   description:
-    "Trusted chartered accountants since 1996. A. Mannan & Co. delivers audit, taxation, advisory, and asset valuation services in Dhaka. ICAB-registered. 500+ clients served.",
+    "Trusted chartered accountants since 1996. A. Mannan & Co. delivers audit, taxation, advisory, CA reports, net worth certificates, and asset valuation services in Dhaka. ICAB-registered. 500+ clients served.",
   keywords: [
     "chartered accountant Dhaka",
     "statutory audit Bangladesh",
+    "CA report",
+    "asset valuation",
+    "net worth certificate",
     "student asset valuation",
     "ICAB registered CA firm",
     "tax filing Bangladesh",
@@ -30,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "A. Mannan & Co. | Chartered Accountants Dhaka",
     description:
-      "Trusted audit, taxation, and asset valuation services in Dhaka. ICAB-registered CA firm since 1996.",
+      "CA reports, net worth certificates, and asset valuation services from a trusted, ICAB-registered CA firm in Dhaka since 1996.",
     url: "https://amannan.cc",
     type: "website",
   },
@@ -47,6 +51,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-white text-slate-700">
+        <StructuredData />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
