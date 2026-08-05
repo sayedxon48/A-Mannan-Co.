@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 type ContactLine = { text: string; href?: string };
 
 const CONTACT_INFO: {
@@ -61,6 +65,23 @@ const CONTACT_INFO: {
 ];
 
 export default function Contact() {
+  const [status, setStatus] = useState<"sent" | "error" | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const result = params.get("contact");
+    if (result === "sent" || result === "error") {
+      setStatus(result);
+      params.delete("contact");
+      const query = params.toString();
+      window.history.replaceState(
+        {},
+        "",
+        window.location.pathname + (query ? `?${query}` : "") + "#contact"
+      );
+    }
+  }, []);
+
   return (
     <section id="contact" className="bg-slate-50 py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -121,7 +142,31 @@ export default function Contact() {
             </ul>
           </div>
 
-          <form className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm lg:col-span-3">
+          <form
+            action="/contact.php"
+            method="POST"
+            className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm lg:col-span-3"
+          >
+            {status === "sent" && (
+              <div className="mb-6 rounded-lg bg-green-50 px-4 py-3 text-sm font-medium text-green-800">
+                Thanks — your message has been sent. We&apos;ll get back to
+                you within one business day.
+              </div>
+            )}
+            {status === "error" && (
+              <div className="mb-6 rounded-lg bg-red-50 px-4 py-3 text-sm font-medium text-red-800">
+                Something went wrong sending your message. Please try again
+                or email us directly.
+              </div>
+            )}
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
                 <label
