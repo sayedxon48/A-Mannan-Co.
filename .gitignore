@@ -42,3 +42,6 @@ next-env.d.ts
 
 # editor/tooling
 .claude/
+
+# secrets — deployed manually, never committed
+public/mail-config.php
