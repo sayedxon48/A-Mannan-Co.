@@ -37,6 +37,8 @@ const CONTACT_INFO: {
     lines: [
       { text: "support@amannan.cc", href: "mailto:support@amannan.cc" },
       { text: "sayed@amannan.cc", href: "mailto:sayed@amannan.cc" },
+      { text: "mannan_fca@yahoo.com", href: "mailto:mannan_fca@yahoo.com" },
+      { text: "amannanfca@gmail.com", href: "mailto:amannanfca@gmail.com" },
     ],
     icon: (
       <path
