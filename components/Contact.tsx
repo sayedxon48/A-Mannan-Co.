@@ -2,7 +2,15 @@
 
 import { useEffect, useState } from "react";
 
-type ContactLine = { text: string; href?: string };
+type ContactLine = { text: string; href?: string; whatsapp?: string };
+
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.48 1.32 4.99L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.9c0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.26.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23a8.2 8.2 0 0 1-4.19-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.22 8.24-8.22zm-4.52 4.66c-.15 0-.4.06-.61.29c-.21.24-.8.78-.8 1.9c0 1.12.82 2.2.93 2.35c.12.15 1.6 2.47 3.94 3.36c1.94.75 2.34.6 2.76.56c.42-.04 1.36-.55 1.55-1.09c.19-.53.19-.98.13-1.08c-.06-.1-.22-.16-.46-.28c-.24-.12-1.36-.67-1.57-.75c-.21-.08-.36-.12-.52.12c-.15.24-.6.75-.73.9c-.13.15-.27.17-.5.06c-.24-.12-1-.37-1.9-1.17c-.7-.63-1.18-1.4-1.31-1.64c-.13-.24-.01-.37.1-.49c.11-.11.24-.28.36-.42c.12-.14.16-.24.24-.4c.08-.16.04-.3-.02-.42c-.06-.12-.52-1.26-.72-1.72c-.19-.46-.38-.4-.52-.4z" />
+    </svg>
+  );
+}
 
 const CONTACT_INFO: {
   label: string;
@@ -25,8 +33,16 @@ const CONTACT_INFO: {
   {
     label: "Phone",
     lines: [
-      { text: "01732 040449", href: "tel:+8801732040449" },
-      { text: "01749 505506", href: "tel:+8801749505506" },
+      {
+        text: "01732 040449",
+        href: "tel:+8801732040449",
+        whatsapp: "https://wa.me/8801732040449",
+      },
+      {
+        text: "01749 505506",
+        href: "tel:+8801749505506",
+        whatsapp: "https://wa.me/8801749505506",
+      },
     ],
     icon: (
       <path
@@ -119,22 +135,37 @@ export default function Contact() {
                     <p className="text-sm font-semibold text-slate-900">
                       {item.label}
                     </p>
-                    <div className="mt-0.5 space-y-0.5">
-                      {item.lines.map((line) =>
-                        line.href ? (
-                          <a
-                            key={line.text}
-                            href={line.href}
-                            className="block text-sm text-slate-600 hover:text-blue-900"
-                          >
-                            {line.text}
-                          </a>
-                        ) : (
-                          <p key={line.text} className="text-sm text-slate-600">
-                            {line.text}
-                          </p>
-                        )
-                      )}
+                    <div className="mt-0.5 space-y-1">
+                      {item.lines.map((line) => (
+                        <div
+                          key={line.text}
+                          className="flex items-center gap-2"
+                        >
+                          {line.href ? (
+                            <a
+                              href={line.href}
+                              className="text-sm text-slate-600 hover:text-blue-900"
+                            >
+                              {line.text}
+                            </a>
+                          ) : (
+                            <p className="text-sm text-slate-600">
+                              {line.text}
+                            </p>
+                          )}
+                          {line.whatsapp && (
+                            <a
+                              href={line.whatsapp}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Chat on WhatsApp: ${line.text}`}
+                              className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform hover:scale-110"
+                            >
+                              <WhatsAppIcon className="h-3 w-3" />
+                            </a>
+                          )}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </li>
