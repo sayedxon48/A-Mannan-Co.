@@ -62,7 +62,7 @@ const SERVICES = [
   {
     title: "Student Asset Valuation",
     description:
-      "Specialized financial certification, net worth valuation reports, and asset validation required for students applying for international visas and foreign university admissions.",
+      "Certified net worth and asset valuation reports that give your visa and foreign university applications the credibility they need — accurate, trusted, and ready on time.",
     icon: (
       <path
         strokeLinecap="round"
