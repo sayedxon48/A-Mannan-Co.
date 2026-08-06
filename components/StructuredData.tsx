@@ -12,7 +12,7 @@ export default function StructuredData() {
     founder: {
       "@type": "Person",
       name: "Md Abdul Mannan FCA",
-      jobTitle: "Founder & Managing Partner",
+      jobTitle: "Founder",
       identifier: "ICAB Membership No. 0662",
     },
     address: {

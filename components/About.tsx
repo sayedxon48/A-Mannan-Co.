@@ -55,7 +55,7 @@ export default function About() {
                 Md Abdul Mannan FCA
               </p>
               <p className="text-xs text-slate-500">
-                Founder &amp; Managing Partner &bull; ICAB Membership No. 0662
+                Founder &bull; ICAB Membership No. 0662
               </p>
             </div>
           </div>
