@@ -27,12 +27,22 @@ export default function VerifyReport() {
 
     setResult({ state: "loading" });
     try {
-      const res = await fetch("/verified-reports.json", { cache: "no-store" });
-      const reports: Report[] = await res.json();
-      const match = reports.find(
-        (r) => r.reportNumber.toLowerCase() === trimmed.toLowerCase()
+      const res = await fetch(
+        `/verify.php?number=${encodeURIComponent(trimmed)}`,
+        { cache: "no-store" }
       );
-      setResult(match ? { state: "found", report: match } : { state: "not-found" });
+      const data = await res.json();
+      if (data.found) {
+        const report: Report = {
+          reportNumber: data.reportNumber,
+          type: data.type,
+          clientRef: data.clientRef,
+          issueDate: data.issueDate,
+        };
+        setResult({ state: "found", report });
+      } else {
+        setResult({ state: "not-found" });
+      }
     } catch {
       setResult({ state: "error" });
     }

@@ -45,3 +45,4 @@ next-env.d.ts
 
 # secrets — deployed manually, never committed
 public/mail-config.php
+public/db-config.php
