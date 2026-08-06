@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 type Report = {
-  reportNumber: string;
+  nidNumber: string;
   type: string;
   clientRef: string;
   issueDate: string;
@@ -28,13 +28,13 @@ export default function VerifyReport() {
     setResult({ state: "loading" });
     try {
       const res = await fetch(
-        `/verify.php?number=${encodeURIComponent(trimmed)}`,
+        `/verify.php?nid=${encodeURIComponent(trimmed)}`,
         { cache: "no-store" }
       );
       const data = await res.json();
       if (data.found) {
         const report: Report = {
-          reportNumber: data.reportNumber,
+          nidNumber: data.nidNumber,
           type: data.type,
           clientRef: data.clientRef,
           issueDate: data.issueDate,
@@ -62,7 +62,7 @@ export default function VerifyReport() {
             Embassies, universities, banks, and other third parties can
             confirm the authenticity of any audit report, net worth
             certificate, or asset valuation report issued by A. Mannan &amp;
-            Co. using the report number printed on the document.
+            Co. using the NID number on the document.
           </p>
         </div>
 
@@ -71,18 +71,18 @@ export default function VerifyReport() {
           className="mt-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
         >
           <label
-            htmlFor="report-number"
+            htmlFor="nid-number"
             className="text-sm font-medium text-slate-700"
           >
-            Report Number
+            NID Number
           </label>
           <div className="mt-1.5 flex flex-col gap-3 sm:flex-row">
             <input
-              id="report-number"
+              id="nid-number"
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="e.g. AMC-2026-0001"
+              placeholder="e.g. 1234567890123"
               className="flex-1 rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-900 focus:outline-none focus:ring-1 focus:ring-blue-900"
             />
             <button
@@ -98,8 +98,8 @@ export default function VerifyReport() {
             <div className="mt-6 rounded-lg bg-green-50 px-4 py-4 text-sm text-green-800">
               <p className="font-semibold">✓ Verified — this report is genuine</p>
               <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
-                <dt className="text-green-700">Report Number</dt>
-                <dd>{result.report.reportNumber}</dd>
+                <dt className="text-green-700">NID Number</dt>
+                <dd>{result.report.nidNumber}</dd>
                 <dt className="text-green-700">Type</dt>
                 <dd>{result.report.type}</dd>
                 <dt className="text-green-700">Issued To</dt>
@@ -112,8 +112,9 @@ export default function VerifyReport() {
 
           {result.state === "not-found" && (
             <div className="mt-6 rounded-lg bg-red-50 px-4 py-3 text-sm font-medium text-red-800">
-              We couldn&apos;t find a report with that number. Double-check it
-              against the document, or contact us directly to confirm.
+              We couldn&apos;t find a report with that NID number.
+              Double-check it against the document, or contact us directly to
+              confirm.
             </div>
           )}
 

@@ -19,16 +19,16 @@ if ($isAuthed && $_SERVER["REQUEST_METHOD"] === "POST") {
     $db = get_db();
 
     if (isset($_POST["add"])) {
-        $reportNumber = trim($_POST["report_number"] ?? "");
+        $nidNumber = trim($_POST["nid_number"] ?? "");
         $type = trim($_POST["type"] ?? "");
         $clientRef = trim($_POST["client_ref"] ?? "");
         $issueDate = trim($_POST["issue_date"] ?? "");
 
-        if ($reportNumber !== "" && $type !== "" && $clientRef !== "" && $issueDate !== "") {
+        if ($nidNumber !== "" && $type !== "" && $clientRef !== "" && $issueDate !== "") {
             $stmt = $db->prepare(
-                "INSERT INTO reports (report_number, type, client_ref, issue_date) VALUES (?, ?, ?, ?)"
+                "INSERT INTO reports (nid_number, type, client_ref, issue_date) VALUES (?, ?, ?, ?)"
             );
-            $stmt->bind_param("ssss", $reportNumber, $type, $clientRef, $issueDate);
+            $stmt->bind_param("ssss", $nidNumber, $type, $clientRef, $issueDate);
             if (!$stmt->execute()) {
                 $error = "Could not add report: " . $stmt->error;
             }
@@ -52,7 +52,7 @@ if ($isAuthed && $_SERVER["REQUEST_METHOD"] === "POST") {
 $reports = [];
 if ($isAuthed) {
     $db = get_db();
-    $result = $db->query("SELECT id, report_number, type, client_ref, issue_date FROM reports ORDER BY id DESC");
+    $result = $db->query("SELECT id, nid_number, type, client_ref, issue_date FROM reports ORDER BY id DESC");
     while ($row = $result->fetch_assoc()) {
         $reports[] = $row;
     }
@@ -96,8 +96,8 @@ if ($isAuthed) {
   <fieldset>
     <legend>Add a report</legend>
     <form method="POST">
-      <label>Report Number</label>
-      <input type="text" name="report_number" placeholder="AMC-2026-0001" required>
+      <label>NID Number</label>
+      <input type="text" name="nid_number" placeholder="1234567890123" required>
       <label>Type</label>
       <select name="type" required>
         <option value="Audit Report">Audit Report</option>
@@ -114,12 +114,12 @@ if ($isAuthed) {
 
   <table>
     <thead>
-      <tr><th>Report Number</th><th>Type</th><th>Issued To</th><th>Date</th><th></th></tr>
+      <tr><th>NID Number</th><th>Type</th><th>Issued To</th><th>Date</th><th></th></tr>
     </thead>
     <tbody>
       <?php foreach ($reports as $r): ?>
         <tr>
-          <td><?= htmlspecialchars($r["report_number"]) ?></td>
+          <td><?= htmlspecialchars($r["nid_number"]) ?></td>
           <td><?= htmlspecialchars($r["type"]) ?></td>
           <td><?= htmlspecialchars($r["client_ref"]) ?></td>
           <td><?= htmlspecialchars($r["issue_date"]) ?></td>
