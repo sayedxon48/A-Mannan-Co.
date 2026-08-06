@@ -17,7 +17,7 @@ const FAQS = [
   {
     question: "How long does a CA report or net worth certificate take?",
     answer:
-      "Turnaround depends on how complex your assets and documentation are. Straightforward cases are typically completed within a few business days — get in touch and we'll give you a timeline specific to your situation.",
+      "Turnaround depends on how complex your assets and documentation are. Straightforward cases are typically completed within a few working days — get in touch and we'll give you a timeline specific to your situation.",
   },
   {
     question: "Is A. Mannan & Co. ICAB-registered?",
