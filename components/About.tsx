@@ -32,6 +32,33 @@ export default function About() {
             standards so you don&apos;t have to, delivering advice that is
             accurate, timely, and easy to act on.
           </p>
+
+          <div className="mt-8 flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-900">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.8}
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
+                />
+              </svg>
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-slate-900">
+                Md Abdul Mannan FCA
+              </p>
+              <p className="text-xs text-slate-500">
+                Founder &amp; Managing Partner &bull; ICAB Membership No. 0662
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8 sm:p-10">

@@ -9,6 +9,12 @@ export default function StructuredData() {
     telephone: ["+8801732040449", "+8801749505506"],
     email: "support@amannan.cc",
     foundingDate: "1996",
+    founder: {
+      "@type": "Person",
+      name: "Md Abdul Mannan FCA",
+      jobTitle: "Founder & Managing Partner",
+      identifier: "ICAB Membership No. 0662",
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "Barnali-3 (9th Floor), 476-E Malibag, DIT Road",
