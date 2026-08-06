@@ -47,6 +47,22 @@ export default function Footer() {
               helping individuals and businesses stay compliant and grow with
               confidence.
             </p>
+            <a
+              href="https://www.facebook.com/profile.php?id=61553319433148"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="A. Mannan & Co. on Facebook"
+              className="mt-5 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-sky-500"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-4.5 w-4.5"
+              >
+                <path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06C2 17.06 5.66 21.21 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22C18.34 21.21 22 17.06 22 12.06Z" />
+              </svg>
+            </a>
           </div>
 
           <div>
