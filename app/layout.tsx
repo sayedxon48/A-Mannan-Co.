@@ -31,12 +31,32 @@ export const metadata: Metadata = {
     "tax filing Bangladesh",
     "RJSC compliance",
   ],
+  alternates: {
+    canonical: "https://amannan.cc",
+  },
   openGraph: {
     title: "A. Mannan & Co. | Chartered Accountants Dhaka",
     description:
       "CA reports, net worth certificates, and asset valuation services from a trusted, ICAB-registered CA firm in Dhaka since 1996.",
     url: "https://amannan.cc",
     type: "website",
+    siteName: "A. Mannan & Co.",
+    locale: "en_US",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "A. Mannan & Co. — Chartered Accountants, Dhaka, Since 1996",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "A. Mannan & Co. | Chartered Accountants Dhaka",
+    description:
+      "CA reports, net worth certificates, and asset valuation services from a trusted, ICAB-registered CA firm in Dhaka since 1996.",
+    images: ["/og-image.png"],
   },
 };
 
