@@ -55,7 +55,15 @@ export default function About() {
                 Md Abdul Mannan FCA
               </p>
               <p className="text-xs text-slate-500">
-                Founder &bull; ICAB Membership No. 0662
+                Founder &bull; ICAB Membership No. 0662 &bull;{" "}
+                <a
+                  href="https://www.icab.org.bd/page/find-member"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-slate-300 underline-offset-2 hover:text-blue-900 hover:decoration-blue-900"
+                >
+                  Verify on ICAB
+                </a>
               </p>
             </div>
           </div>
