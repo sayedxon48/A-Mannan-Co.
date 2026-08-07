@@ -62,7 +62,7 @@ export default function VerifyReport() {
             Embassies, universities, banks, and other third parties can
             confirm the authenticity of any audit report, net worth
             certificate, or asset valuation report issued by A. Mannan &amp;
-            Co. using the NID number on the document.
+            Co. using the NID or passport number on the document.
           </p>
         </div>
 
@@ -74,7 +74,7 @@ export default function VerifyReport() {
             htmlFor="nid-number"
             className="text-sm font-medium text-slate-700"
           >
-            NID Number
+            NID or Passport Number
           </label>
           <div className="mt-1.5 flex flex-col gap-3 sm:flex-row">
             <input
@@ -82,7 +82,7 @@ export default function VerifyReport() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="e.g. 1234567890123"
+              placeholder="e.g. 1234567890123 or A12345678"
               className="flex-1 rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-900 focus:outline-none focus:ring-1 focus:ring-blue-900"
             />
             <button
@@ -98,7 +98,7 @@ export default function VerifyReport() {
             <div className="mt-6 rounded-lg bg-green-50 px-4 py-4 text-sm text-green-800">
               <p className="font-semibold">✓ Verified — this report is genuine</p>
               <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
-                <dt className="text-green-700">NID Number</dt>
+                <dt className="text-green-700">NID / Passport</dt>
                 <dd>{result.report.nidNumber}</dd>
                 <dt className="text-green-700">Type</dt>
                 <dd>{result.report.type}</dd>
@@ -112,9 +112,9 @@ export default function VerifyReport() {
 
           {result.state === "not-found" && (
             <div className="mt-6 rounded-lg bg-red-50 px-4 py-3 text-sm font-medium text-red-800">
-              We couldn&apos;t find a report with that NID number.
-              Double-check it against the document, or contact us directly to
-              confirm.
+              We couldn&apos;t find a report with that NID or passport
+              number. Double-check it against the document, or contact us
+              directly to confirm.
             </div>
           )}
 

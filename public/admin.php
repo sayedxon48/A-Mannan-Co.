@@ -107,10 +107,10 @@ if ($isAuthed) {
 
   <fieldset>
     <legend>Add or update a report</legend>
-    <p class="hint">Entering an NID number that's already listed below updates that entry instead of creating a duplicate.</p>
+    <p class="hint">Entering an NID or passport number that's already listed below updates that entry instead of creating a duplicate.</p>
     <form method="POST">
-      <label>NID Number</label>
-      <input type="text" name="nid_number" placeholder="1234567890123" required>
+      <label>NID or Passport Number</label>
+      <input type="text" name="nid_number" placeholder="1234567890123 or A12345678" required>
       <label>Type</label>
       <select name="type" required>
         <option value="Audit Report">Audit Report</option>
@@ -127,7 +127,7 @@ if ($isAuthed) {
 
   <table>
     <thead>
-      <tr><th>NID Number</th><th>Type</th><th>Issued To</th><th>Date</th><th></th></tr>
+      <tr><th>NID / Passport</th><th>Type</th><th>Issued To</th><th>Date</th><th></th></tr>
     </thead>
     <tbody>
       <?php foreach ($reports as $r): ?>
