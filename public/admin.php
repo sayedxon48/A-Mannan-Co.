@@ -4,6 +4,7 @@ require __DIR__ . "/db.php";
 
 $adminPassword = get_admin_password();
 $error = "";
+$success = "";
 
 if (isset($_POST["login_password"])) {
     if (hash_equals($adminPassword, $_POST["login_password"])) {
@@ -25,12 +26,19 @@ if ($isAuthed && $_SERVER["REQUEST_METHOD"] === "POST") {
         $issueDate = trim($_POST["issue_date"] ?? "");
 
         if ($nidNumber !== "" && $type !== "" && $clientRef !== "" && $issueDate !== "") {
+            // Re-submitting an existing NID updates it instead of failing —
+            // handles typo fixes without needing to delete first.
             $stmt = $db->prepare(
-                "INSERT INTO reports (nid_number, type, client_ref, issue_date) VALUES (?, ?, ?, ?)"
+                "INSERT INTO reports (nid_number, type, client_ref, issue_date) VALUES (?, ?, ?, ?)
+                 ON DUPLICATE KEY UPDATE type = VALUES(type), client_ref = VALUES(client_ref), issue_date = VALUES(issue_date)"
             );
             $stmt->bind_param("ssss", $nidNumber, $type, $clientRef, $issueDate);
-            if (!$stmt->execute()) {
-                $error = "Could not add report: " . $stmt->error;
+            if ($stmt->execute()) {
+                $success = $stmt->affected_rows >= 2
+                    ? "Updated the existing entry for NID $nidNumber."
+                    : "Added report for NID $nidNumber.";
+            } else {
+                $error = "Could not save report: " . $stmt->error;
             }
             $stmt->close();
         } else {
@@ -44,6 +52,7 @@ if ($isAuthed && $_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->close();
+        $success = "Report deleted.";
     }
 
     $db->close();
@@ -76,6 +85,8 @@ if ($isAuthed) {
   table { width: 100%; border-collapse: collapse; margin-top: 20px; }
   th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
   .error { color: #b91c1c; font-size: 14px; margin: 10px 0; }
+  .success { color: #15803d; font-size: 14px; margin: 10px 0; }
+  .hint { color: #64748b; font-size: 12px; margin: -10px 0 14px; }
   fieldset { border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin-top: 30px; }
 </style>
 </head>
@@ -92,9 +103,11 @@ if ($isAuthed) {
 <?php else: ?>
   <h1>Report Verification Admin</h1>
   <?php if ($error): ?><p class="error"><?= htmlspecialchars($error) ?></p><?php endif; ?>
+  <?php if ($success): ?><p class="success"><?= htmlspecialchars($success) ?></p><?php endif; ?>
 
   <fieldset>
-    <legend>Add a report</legend>
+    <legend>Add or update a report</legend>
+    <p class="hint">Entering an NID number that's already listed below updates that entry instead of creating a duplicate.</p>
     <form method="POST">
       <label>NID Number</label>
       <input type="text" name="nid_number" placeholder="1234567890123" required>
@@ -108,7 +121,7 @@ if ($isAuthed) {
       <input type="text" name="client_ref" placeholder="Client name or reference" required>
       <label>Issue Date</label>
       <input type="date" name="issue_date" required>
-      <button type="submit" name="add" value="1">Add Report</button>
+      <button type="submit" name="add" value="1">Save Report</button>
     </form>
   </fieldset>
 
